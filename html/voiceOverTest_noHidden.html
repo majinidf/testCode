@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Follow the mouse</title>
+  <title>voiceOver Test</title>
   <style>
     html, body {margin: 0; padding: 0;}
+    button:focus{border:3px solid red;}
     ul {list-style: none; padding: 0; margin: 0;}
     .background {background-color:aquamarine}
     .l-wrapper {position: relative; max-width: 100%; margin: 0 auto; background-color: cornsilk;}
@@ -43,10 +44,23 @@
 
     <div class="layer">
       <a href="#" onclick="this.parentNode.style.display = 'none'">닫기</a>
+      <button id="testfocus2">111</button>
+      <button onclick="document.querySelector('#testfocus2').focus()">222</button>
+      <button id="testfocus">333</button>
+      <button onclick="setVoiceOverFocus(this,document.querySelector('#testfocus'))">444</button>
     </div>
   </div>
   <script>
-    
-  </script>
+    function setVoiceOverFocus(el,element) {
+      element.blur()
+      el.setAttribute('aria-hidden',true)
+      el.style.visibility = 'hidden'
+      setTimeout(function(){
+        //el.removeAttribute('aria-hidden')
+        //el.setAttribute('aria-hidden',false)
+        //element.focus()
+      },100)
+    }
+    </script>
 </body>
 </html>
