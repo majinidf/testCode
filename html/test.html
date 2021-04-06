@@ -1,0 +1,17 @@
+<button id="testfocus2">111</button>
+<button onclick="document.querySelector('#testfocus2').focus()">222</button>
+<button id="testfocus">333</button>
+<button onclick="setVoiceOverFocus(this,document.querySelector('#testfocus'))">444</button>
+<script>
+function setVoiceOverFocus(el,ta) {
+	ta.blur()
+	el.setAttribute('aria-hidden',false)
+	setTimeout(function(){
+		el.removeAttribute('aria-hidden')
+		ta.focus()
+	},100)
+}
+</script>
+<style>
+button:focus{border:3px solid red;}
+</style>
