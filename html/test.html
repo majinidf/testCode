@@ -11,29 +11,16 @@
   <button onclick="document.querySelector('#testfocus2').focus()">222</button>
   <button id="testfocus">333</button>
   <button onclick="setVoiceOverFocus(this,document.querySelector('#testfocus'))">444</button>
-  <button>555</button>
   <script>
   function setVoiceOverFocus(el,element) {
     element.blur()
     el.setAttribute('aria-hidden',false)
+    el.style.visibility = 'hidden'
     setTimeout(function(){
-      el.removeAttribute('aria-hidden')
+      //el.removeAttribute('aria-hidden')
+      //el.setAttribute('aria-hidden',false)
       element.focus()
     },100)
-    var focusInterval = 10; // ms, time between function calls
-    var focusTotalRepetitions = 10; // number of repetitions
-
-    element.setAttribute('tabindex', '0');
-    element.blur();
-
-    var focusRepetitions = 0;
-    var interval = window.setInterval(function() {
-      element.focus();
-      focusRepetitions++;
-      if (focusRepetitions >= focusTotalRepetitions) {
-        window.clearInterval(interval);
-      }
-    }, focusInterval);
   }
   </script>
   <style>
