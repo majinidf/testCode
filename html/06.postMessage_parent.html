@@ -9,27 +9,42 @@
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="btn" style="background-image: url('images/gojoseon-tab-deactive.png'); margin-right: 10px;">0</div>
-    <div class="btn" style="background-image: url('images/samguk-tab-deactive.png'); margin-right: 10px;">1</div>
-    <div class="btn" style="background-image: url('images/goryeo-tab-active.png'); margin-right: 10px;">2</div>
-    <div class="btn" style="background-image: url('images/joseon-tab-deactive.png'); margin-right: 10px;">3</div>
-    <div class="btn" style="background-image: url('images/contemporary-tab-deactive.png');">4</div>
-  </div>
-  
-  <script>
-    window.addEventListener('DOMContentLoaded',(e)=>{
-      const btns = document.querySelectorAll('.wrapper .btn');
+  <h1>window.postMessage</h1>
 
-      btns.forEach((ele,idx) => {
-        const is_active = ele.attributes('style').indexOf('-tab-active.png');
-        if( is_active !== -1 ){
-          window.parent.postMessage(
-            {index: idx}
-          );
-        }
-      });
+  <iframe id="child" src="https://majinidf.github.io/testCode/html/07.postMessage_child.html" allowfullscreen="" allowpaymentrequest="" frameborder="0"></iframe>
+  
+  <a href="http://www.0.com" class="link" target="_blank">URL</a>
+  <!-- <script async src="//jsfiddle.net/majinidf3/xante7d5/5/embed/result/"></script> -->
+
+  <a href="https://codepen.io/raincodemdf/pen/WNVrzKL">https://codepen.io/raincodemdf/pen/WNVrzKL</a>
+
+  <script>
+    const childIframe = document.querySelector('#child').contentWindow;
+    const link = document.querySelector('.link');
+    let tab_index = 0;
+    const urls = [
+    	'http://www.0.com',
+    	'http://www.1.com',
+    	'http://www.2.com',
+    	'http://www.3.com'
+    ];
+    
+    window.addEventListener('message', (e) => {
+    	console.log(e)
+    	
+    	if(e.origin !== 'https://majinidf.github.io') return false;
+    	
+    	tab_index = e.data.index; console.log('1 typeof tab_index : ', typeof tab_index);
+    	// tab_index = JSON.stringify(data);
+    	//console.log(tab_index);
+    	changeHref(tab_index);
     });
+    
+    const changeHref = (idx) => {
+    	console.log('2 tab_index : ', tab_index);
+    	link.setAttribute('href', urls[idx]);
+    	link.textContent = urls[idx];
+    }
 
   </script>
 </body>
