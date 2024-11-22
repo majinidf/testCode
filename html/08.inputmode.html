@@ -4,14 +4,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Testing a inputmode</title>
+	<style>
+		div + div {margin: 10px 0 0;}
+		label {margin: 0 10px 0 0;}
+		input {width: 100px;}
+	</style>
 </head>
 <body>
 	<h1>Inputmode</h1>
 	<div>
-		<label for="no-inputmode">No inputmode</label><input type="number" name="" id="no-inputmode">
+		<label for="no-inputmode">No im</label><input type="number" name="" id="no-inputmode">
 	</div>
 	<div>
-		<label for="has-inputmode">Has inputmode</label><input type="number" name="" id="has-inputmode" inputmode="numeric">
+		<label for="has-inputmode">Has im</label><input type="number" name="" id="has-inputmode" inputmode="numeric">
+	</div>
+	<div>
+		<label for="has-pattern1">Has pattern1</label><input type="number" name="" id="has-pattern1" pattern="\d*">
+	</div>
+	<div>
+		<label for="has-pattern2">Has pattern2</label><input type="number" name="" id="has-pattern2" pattern="[0-9]*">
 	</div>
 </body>
 </html>
