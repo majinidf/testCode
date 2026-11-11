@@ -19,15 +19,16 @@ body {
   left: 0;
   right: 0;
   top: 60px;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   height: calc(100vh - 60px);
+  height: calc(100dvh - 60px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
   background: skyblue;
 }
-
+  
 .bottom {
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
